@@ -2,10 +2,12 @@ import ExpenseItem from "./ExpenseItem";
 import { Container } from "react-bootstrap";
 import "./Expense.css";
 
-const Expense = () => {
+const Expense = ({ expenseLists }) => {
   return (
     <Container className="expenseList">
-      <ExpenseItem />
+      {expenseLists.map((expenseList) => {
+        return <ExpenseItem expenseList={expenseList} key={expenseList.id} />;
+      })}
     </Container>
   );
 };

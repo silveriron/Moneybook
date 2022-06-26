@@ -1,19 +1,20 @@
 import { Container, Row, Col } from "react-bootstrap";
 import "./ExpenseItem.css";
 
-const ExpenseItem = () => {
+const ExpenseItem = ({ expenseList }) => {
+  console.log(expenseList);
+
   return (
     <Container className="expenseItem">
       <Row>
         <Col>
           <div className="dateBox">
-            <p>2022년</p>
-            <p>6월 22일</p>
+            <p>{expenseList.date}</p>
           </div>
         </Col>
-        <Col xs={8}>물티슈</Col>
+        <Col xs={8}>{expenseList.title}</Col>
         <Col>
-          <div className="moneyBox">5,000원</div>
+          <div className="moneyBox">{expenseList.price}</div>
         </Col>
       </Row>
     </Container>
