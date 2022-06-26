@@ -1,0 +1,9 @@
+.ExpenseFilter {
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.yearSelecter {
+  text-align: right;
+  padding: 0 1.5rem;
+}

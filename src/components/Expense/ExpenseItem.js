@@ -1,9 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import "./ExpenseItem.css";
 
-const ExpenseItem = ({ expenseList }) => {
-  console.log(expenseList);
-
+const ExpenseItem = ({ expenseList, year }) => {
   return (
     <Container className="expenseItem">
       <Row>
