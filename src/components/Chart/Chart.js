@@ -2,8 +2,6 @@ import { Container, Row } from "react-bootstrap";
 import ChartBar from "./ChartBar";
 
 const Chart = ({expenseLists}) => {
-    console.log("chart.js")
-    console.log(expenseLists)
     let totalPrice = 0; 
     expenseLists.map(expenseList => {
         return totalPrice += expenseList.price
@@ -28,8 +26,6 @@ const Chart = ({expenseLists}) => {
         const month = expenseList.date.getMonth()
         MonthPriceData[month].price += expenseList.price
     }
-
-    console.log(MonthPriceData)
 
 
     return(

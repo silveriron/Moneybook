@@ -25,6 +25,24 @@ function App() {
       price: 23000,
       date: new Date("2019-08-11"),
     },
+    {
+      id: 4,
+      title: "우드스틱",
+      price: 9000,
+      date: new Date("2022-02-14"),
+    },
+    {
+      id: 5,
+      title: "강아지 사료",
+      price: 23000,
+      date: new Date("2020-11-18"),
+    },
+    {
+      id: 6,
+      title: "음료수",
+      price: 1900,
+      date: new Date("2020-04-04"),
+    },
   ]);
 
   const expenseListHandler = (expenseData) => {

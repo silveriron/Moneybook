@@ -7,6 +7,21 @@ const NewExpense = (props) => {
   const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
 
+  const [isButtonStatus, setIsButtonStatus] = useState("추가하기")
+  
+  const [buttonView, setButtonView] = useState("none")
+
+  const formChangeHandler = () => {
+    if (isButtonStatus === "추가하기") {
+      setButtonView("block")
+      setIsButtonStatus("숨기기")
+    } else {
+      setButtonView("none")
+
+      setIsButtonStatus("추가하기")
+    }
+  }
+
   const titleHandler = (e) => {
     setTitle(e.target.value);
   };
@@ -33,7 +48,7 @@ const NewExpense = (props) => {
 
   return (
     <Container className="newExpense">
-      <form onSubmit={expenseHandler}>
+      <form style={{display: buttonView}} onSubmit={expenseHandler}>
         <Row>
           <Col>
             <label>품목</label>
@@ -60,6 +75,11 @@ const NewExpense = (props) => {
           </Col>
         </Row>
       </form>
+      <Row>
+        <Col className="addButton">
+        <button onClick={formChangeHandler}>{isButtonStatus}</button>
+        </Col>
+      </Row>
     </Container>
   );
 };
