@@ -16,7 +16,8 @@ const NewExpense = (props) => {
   };
 
   const dateHandler = (e) => {
-    setDate(e.target.value);
+    const date = new Date(e.target.value).toDateString()
+    setDate(date);
   };
 
   const expenseHandler = (e) => {
