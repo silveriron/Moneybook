@@ -16,7 +16,7 @@ function App() {
     {
       id: 2,
       title: "티셔츠",
-      price: 19000,
+      price: 10000,
       date: new Date("2019-07-03"),
     },
     {
@@ -28,6 +28,7 @@ function App() {
   ]);
 
   const expenseListHandler = (expenseData) => {
+    console.log("App.js")
     const nextExpenseLists = [expenseData, ...expenseLists];
     setExpenseLists(nextExpenseLists);
   };

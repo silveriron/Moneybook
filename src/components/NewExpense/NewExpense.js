@@ -12,11 +12,11 @@ const NewExpense = (props) => {
   };
 
   const priceHandler = (e) => {
-    setPrice(e.target.value);
+    setPrice(+e.target.value);
   };
 
   const dateHandler = (e) => {
-    const date = new Date(e.target.value).toDateString()
+    const date = new Date(e.target.value)
     setDate(date);
   };
 
