@@ -27,16 +27,16 @@ const NewExpense = (props) => {
     const title = titleInputRef.current.value;
     const price = +priceInputRef.current.value;
     const date = new Date(dateInputRef.current.value);
-
     const expenseData = {
       title,
       price,
       date,
       id: Math.random().toString(),
     };
-
-    console.log(expenseData);
     props.onSaveExpense(expenseData);
+    titleInputRef.current.value = "";
+    priceInputRef.current.value = "";
+    dateInputRef.current.value = "";
   };
 
   return (
