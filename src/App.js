@@ -46,9 +46,9 @@ function App() {
   ]);
 
   const expenseListHandler = (expenseData) => {
-    console.log("App.js")
-    const nextExpenseLists = [expenseData, ...expenseLists];
-    setExpenseLists(nextExpenseLists);
+    setExpenseLists((prev) => {
+      return [expenseData, ...prev];
+    });
   };
 
   const [year, setYear] = useState("2020");
@@ -58,14 +58,18 @@ function App() {
   };
 
   const filteredExpenseLists = expenseLists.filter((expenseList) => {
-    return expenseList.date.getFullYear() === +year
-  })
+    return expenseList.date.getFullYear() === +year;
+  });
 
   return (
-    <div>
+    <>
       <NewExpense onSaveExpense={expenseListHandler} />
-      <Expense expenseLists={filteredExpenseLists} year={year} yearChangeHandler={yearChangeHandler} />
-    </div>
+      <Expense
+        expenseLists={filteredExpenseLists}
+        year={year}
+        yearChangeHandler={yearChangeHandler}
+      />
+    </>
   );
 }
 

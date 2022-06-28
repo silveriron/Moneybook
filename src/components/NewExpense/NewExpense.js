@@ -1,62 +1,55 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./NewExpense.css";
 
 const NewExpense = (props) => {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [date, setDate] = useState("");
+  const titleInputRef = useRef();
+  const priceInputRef = useRef();
+  const dateInputRef = useRef();
 
-  const [isButtonStatus, setIsButtonStatus] = useState("추가하기")
-  
-  const [buttonView, setButtonView] = useState("none")
+  const [isButtonStatus, setIsButtonStatus] = useState("추가하기");
+
+  const [buttonView, setButtonView] = useState("none");
 
   const formChangeHandler = () => {
     if (isButtonStatus === "추가하기") {
-      setButtonView("block")
-      setIsButtonStatus("숨기기")
+      setButtonView("block");
+      setIsButtonStatus("숨기기");
     } else {
-      setButtonView("none")
+      setButtonView("none");
 
-      setIsButtonStatus("추가하기")
+      setIsButtonStatus("추가하기");
     }
-  }
-
-  const titleHandler = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const priceHandler = (e) => {
-    setPrice(+e.target.value);
-  };
-
-  const dateHandler = (e) => {
-    const date = new Date(e.target.value)
-    setDate(date);
   };
 
   const expenseHandler = (e) => {
     e.preventDefault();
+    const title = titleInputRef.current.value;
+    const price = +priceInputRef.current.value;
+    const date = new Date(dateInputRef.current.value);
+
     const expenseData = {
       title,
       price,
       date,
       id: Math.random().toString(),
     };
+
+    console.log(expenseData);
     props.onSaveExpense(expenseData);
   };
 
   return (
     <Container className="newExpense">
-      <form style={{display: buttonView}} onSubmit={expenseHandler}>
+      <form style={{ display: buttonView }} onSubmit={expenseHandler}>
         <Row>
           <Col>
             <label>품목</label>
-            <input name="title" type="text" onInput={titleHandler} />
+            <input name="title" type="text" ref={titleInputRef} />
           </Col>
           <Col>
             <label>가격</label>
-            <input name="price" type="number" onInput={priceHandler} />
+            <input name="price" type="number" ref={priceInputRef} />
           </Col>
         </Row>
         <Row>
@@ -67,7 +60,7 @@ const NewExpense = (props) => {
               type="date"
               min="2019-01-01"
               max="2022-12-31"
-              onInput={dateHandler}
+              ref={dateInputRef}
             />
           </Col>
           <Col>
@@ -77,7 +70,7 @@ const NewExpense = (props) => {
       </form>
       <Row>
         <Col className="addButton">
-        <button onClick={formChangeHandler}>{isButtonStatus}</button>
+          <button onClick={formChangeHandler}>{isButtonStatus}</button>
         </Col>
       </Row>
     </Container>
